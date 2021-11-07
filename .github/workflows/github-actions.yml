@@ -26,6 +26,7 @@ jobs:
       - name: Push to Docker Hub 
         run: docker push alinisarahmed/docker-react-temp
   deploy: 
+    needs: run-tests 
     uses: emoneymeets/action-beanstalk-deploy@master
     with: 
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
