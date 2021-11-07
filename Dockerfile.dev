@@ -1,0 +1,20 @@
+FROM node:16.4.1-alpine
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
+RUN npm install --silent
+RUN npm install react-scripts -g --silent
+
+COPY . ./
+
+CMD ["npm", "start"]
+
+
