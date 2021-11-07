@@ -20,5 +20,5 @@ jobs:
       - name: build 
         run: docker build -t alinisarahmed/docker-react-temp -f Dockerfile.dev . 
       - name: test 
-        run: docker run alinisarahmed/docker-react-temp npm run test -- --coverage
+        run: docker run -e CI=true alinisarahmed/docker-react-temp npm run test
 
