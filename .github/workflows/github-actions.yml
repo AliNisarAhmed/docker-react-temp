@@ -21,4 +21,14 @@ jobs:
         run: docker build -t alinisarahmed/docker-react-temp -f Dockerfile.dev . 
       - name: test 
         run: docker run -e CI=true alinisarahmed/docker-react-temp npm run test
-
+      - name: Tag our Image
+        run: docker tag alinisarahmed/docker-react-temp alinisarahmed/docker-react-temp:latest
+      - name: Push to Docker Hub 
+        run: docker push alinisarahmed/docker-react-temp
+  deploy: 
+    uses: einaregilsson/beanstalk-deploy@v18
+    with: 
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      config_path: "configs/prod.json"
+      aws_region: us-west-2
