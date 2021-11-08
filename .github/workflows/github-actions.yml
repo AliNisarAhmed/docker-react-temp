@@ -34,5 +34,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_ACCESS_SECRET_KEY }}
           application_name: docker-react-temp
           environment_name: Dockerreacttemp-env
-          version_label: Sample Application
+          version_label: 12345
           region: us-west-2
+          deployment_package: deploy.zip
