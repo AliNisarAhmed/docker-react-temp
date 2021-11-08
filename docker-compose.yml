@@ -1,8 +1,6 @@
 version: '3'
 services:
   web:
-    build:
-      context: .
-        dockerfile: Dockerfile
-      ports:
-        - '80:80'
+    image: alinisarahmed/docker-react-temp
+    ports:
+      - '80:3000'
